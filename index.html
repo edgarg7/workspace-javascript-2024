@@ -116,8 +116,21 @@
             <p id="p1"> Paragraph Number One </p>
             <p id="p2"> Paragraph Number two </p>
             <p id="p3"> Paragraph Number three </p>
-            <p>Please write JavaScript code to change the content of each paragraph.​
-            <p>
+            <p>Please write JavaScript code to change the content of each paragraph.​</p>
+            <script>
+                // change the first paragraph
+                const pOne = document.getElementById("p1");
+                pOne.innerHTML = "<b> Bold elements </b>";
+                const pTwo = document.getElementById("p2");
+                pTwo.innerHTML = "<b> I changed as well </b>";
+                const pThree = document.getElementById("p3");
+                pThree.innerHTML = "<b> I also changed </b>"; 
+
+                // other getElements
+                //const pTwo = document.getElementsByTagName[0];
+                //console.log(pTwo);
+
+            </script>
 
 
         </div>
@@ -127,6 +140,21 @@
             <p> Please enter your numbers </p>
             <script>
                 function calculate() {
+                    //get the value from the form and add them up
+                    const input1 = document.getElementsByName('num1')[0];
+                    console.log("get the first input " + input1.value);
+
+                    const input2 = document.getElementsByName('num2')[0];
+                    console.log("get the second input " + input2.value);
+
+                    var a = parseFloat(input1.value);
+                    var b = parseFloat(input2.value);
+                    var c = a + b;
+
+                    const resultL = document.getElementById("result");
+                    resultL.textContent = " " + c;
+                    console.log("The result is " + c);
+
 
 
                 }
@@ -157,6 +185,19 @@
                     </label>
                 </p>
             </form>
+            <script>
+                //Event handler 
+                function welcome(){
+                    alert("Thank you! ");
+
+                }
+                //Binding -- register the event
+                const nameE = document.getElementById('cName');
+                nameE.addEventListener('blur', welcome);
+
+
+            </script>
+
 
         </div>
 
