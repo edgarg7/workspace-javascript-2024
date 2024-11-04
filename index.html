@@ -175,7 +175,7 @@
                     </label>
                 </p>
 
-                <p id="message">
+                <p id="checkmessage">
 
                 </p>
 
@@ -188,7 +188,12 @@
             <script>
                 //Event handler 
                 function welcome(){
-                    alert("Thank you! ");
+                    //alert("Thank you! ");
+                    const namebox = document.getElementById('cName');
+                    //check and call backend database
+                    var newmessage = "Welcome " + namebox.value + ", you are a new customer";
+                    //put the message back
+                    document.getElementById('checkmessage').textContent = newmessage;
 
                 }
                 //Binding -- register the event
@@ -204,8 +209,24 @@
         <div class="practice">
             <h1> Practice - Calculate Square</h1>
             Calculating Square:
-            <input type="text" id="num" placeholder="Type in a number"> <sup> 2 </sup> =
-            <label id="result"> ? </label>
+            <input type="text" id="squarenum" placeholder="Type in a number"> <sup> 2 </sup> =
+            <label id="squareresult"> ? </label>
+            <script>
+                function dosquare(){
+                    //get the number
+                    const squareE = document.getElementById("squarenum");
+                    var number = parseInt(squareE.value);
+                    console.log("The square number is " + number);
+                    //do square
+                    var newnum = number * number;
+
+                    //put it back to the page
+                     document.getElementById("squareresult").textContent = " " + newnum;
+                }
+
+                const squareE = document.getElementById("squarenum");
+                squareE.addEventListener('change', dosquare);
+            </script>
 
         </div>
 
@@ -219,8 +240,20 @@
 
             <input type="button" id="tryit" value="Click and Display"> 
 
-            <div id="message"> 
+            <div id="htmlcode"> 
             </div>
+
+            <script>
+                function convertHTML(){
+                    const codeE = document.getElementById('code');
+                    const htmlcodeE = document.getElementById('htmlcode');
+                    console.log(codeE.value);
+                    htmlcodeE.innerHTML = codeE.value;
+                }
+
+                document.getElementById('tryit').addEventListener('click', convertHTML);
+
+            </script>
 
 
         </div>
@@ -244,7 +277,47 @@
             </p>
 
             <script type="text/javascript">
+               
 
+                //event handlers
+                function getprice() {
+                    //get elements
+                    var year = document.getElementById('year');
+                    var condition = document.getElementById('condition');
+                    console.log(year.value);
+                    console.log(year.selectedIndex);
+                    if(year.value == "2003" && condition.value == "Fair"){
+                        price = 2000;
+                    }
+
+                    if(year.value == "2003" && condition.value == "Good"){
+                        price = 3000;
+                    }
+
+                    if(year.value == "2004" && condition.value == "Fair"){
+                        price = 2200;
+                    }
+
+                    if(year.value == "2004" && condition.value == "Good"){
+                        price = 4000;
+                    }
+                    //the other way
+                    //if(year.selectedIndex == 0){
+                      //  if(condition.selectedIndex == 0){
+                        //    price = 2000;
+                       // }else{
+                       //     price = 3000;
+                       // }
+                  //  }
+
+                    //finish the if statement
+                    document.getElementById("price").innerHTML= "the price is <b>" + price + "</b>";
+
+                }
+
+                //add event
+                year.addEventListener('change', getprice, false);
+                condition.addEventListener('change', getprice, false);
 
 
             </script>
@@ -256,6 +329,33 @@
             <p> Choose your favorite theme(warm, cool, hot)
                 <input type="text" id="theme">
             </p>
+            <script>
+                //get element and add event listener
+                var theme = document.getElementById('theme');
+                theme.addEventListener('blur', gettheme, false);
+                //action
+                function gettheme(){
+                    var themevalue = document.getElementById('theme').value;
+
+                    switch(themevalue){
+                        case "warm":
+                            document.body.style.backgroundColor = "yellow";
+                            break;
+                        case "cool":
+                            document.body.style.backgroundColor = "blue";
+                            break;
+                        case "hot":
+                            document.body.style.backgroundColor = "red";
+                            break;
+                        default:
+                            alert("Please enter a valid theme");
+                    }
+
+                }
+
+
+
+            </script>
 
         </div>
 
