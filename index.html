@@ -380,11 +380,45 @@
 
             </p>
             <p>
-                <input type="button" value="Check Premium">
+                <input type="button" id="premium" value="Check Premium">
             </p>
-            <p id="result">
+            <p id="premiumresult">
 
             </p>
+            <script>
+                function getpremium(){
+                    var base = 10;
+                    var coverage = document.querySelector('input[name="coverage"]:checked').value;
+                    var ageindex = document.querySelector('#agegroup').selectedIndex;
+                    console.log("The coverage is " + coverage + " age " + ageindex);
+
+                    //get the age factor using switch
+                    var agefactor = 0;
+                    switch(ageindex){
+                        case 0: agefactor = 0.08; break;
+                        case 1: agefactor = 0.09; break;
+                        case 2: agefactor = 0.11; break;
+                        case 3: agefactor = 0.17; break;
+                        case 4: agefactor = 0.29; break;
+                        case 5: agefactor = 0.48; break;
+                        case 6: agefactor = 0.75; break;
+                        case 7: agefactor = 1.17; break;
+
+                        default: break;
+                    }
+
+                    //calculation
+                    var premium = base + parseFloat(coverage) / 1000 * agefactor;
+                    //display in paragraph  # result ----using querySelector
+
+                }
+                //get the element
+                var bE = document.querySelector('input[value="Check Premium"]');
+                bE.addEventListener('click', getpremium, false);
+
+
+
+            </script>
 
         </div>
 
@@ -398,6 +432,19 @@
             <p>
                 <input type="button" value="Click for Square">
             </p>
+            <p id="squarelist"> </p>
+            <script>
+                var outlist = "<ul>";
+                for(let i = 0; i < 6; i++){
+                    var square = i * i;
+                    outlist += "<li>" + i + " ^2 " + square + "</li>";
+                    //alert(square);
+                }
+                outlist += "</ul>";
+                document.getElementById('squarelist').innerHTML = outlist;
+
+
+            </script>
 
         </div>
 
@@ -435,6 +482,17 @@
             <p> A simple JavaScript Quiz </p>
             <p>Target: Generate a simple substract and add problems using JavaScript and then check the answers</p>
             <a href="quiz1.html">Do your practice in quiz1.html</a>
+            <script>
+                //try Math.random
+                for(let i = 0; i < 6; i++){
+                    var num = Math.floor(Math.random() * 20) + 20;
+                    alert(num);
+                }
+
+
+            </script>
+
+
         </div>
 
         <div class="practice">
